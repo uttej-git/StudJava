@@ -64,7 +64,7 @@ public class StudentManager {
     }
 
     public void loadFromFile(String filename) {
-        try (Scanner fileScanner = new Scanner(new File(filename))) {
+        try (Scanner fileScanner = new Scanner(new File("data/" + filename))) {
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
                 if (data.length < 7) continue;
@@ -85,7 +85,7 @@ public class StudentManager {
     }
 
     public void saveToFile(String filename) {
-        try (PrintWriter writer = new PrintWriter(new File(filename))) {
+        try (PrintWriter writer = new PrintWriter(new File("data/" + filename))) {
             for (Student s : students.values()) {
                 writer.println(s.getId() + "," + s.getName() + "," + s.getAge() + "," + s.getCourse() + "," +
                         s.getResult() + "," + s.getAttendance() + "," + s.getFee());
@@ -118,7 +118,7 @@ public class StudentManager {
     }
 
     try {
-        PdfWriter writer = new PdfWriter(pdfFilename);
+        PdfWriter writer = new PdfWriter("reports/" + pdfFilename);
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
