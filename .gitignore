@@ -1,0 +1,20 @@
+# Ignore compiled class files
+*.class
+
+# Ignore all files in the lib folder (optional if you don’t want to push jars)
+lib/
+
+# Ignore generated PDFs
+*.pdf
+
+# Ignore IDE-specific files (if you use IntelliJ or Eclipse)
+*.iml
+.idea/
+*.log
+*.swp
+*.swo
+.DS_Store
+
+# Ignore data files (optional, like students.txt if not needed on GitHub)
+students.txt
+
