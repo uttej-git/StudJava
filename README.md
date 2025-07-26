@@ -3,81 +3,64 @@
 A simple yet powerful **Java-based Student Management System** with:
 - File-based storage
 - Interactive console UI
-- PDF export with iText 7 (color-coded, categorized)
+- PDF export with iText 7 (color-coded & categorized)
+- Input validations (age, CGPA, attendance, fee, unique ID)
 
 ---
 
 ## 📂 Project Structure
 
 ```plaintext
-├── Main.java              # Entry point with menu-driven CLI
-├── Student.java           # Model class for student data
-├── StudentManager.java    # Core logic: CRUD, file I/O, PDF export
-├── students.txt           # Persistent local storage of student data
-└── lib/                   # iText .jar files (if needed)
+├── src/
+│   ├── Main.java              # Entry point with menu-driven CLI
+│   ├── Student.java           # Model class for student data (with gender)
+│   └── StudentManager.java    # Core logic: CRUD, file I/O, PDF export
+├── students.txt               # Persistent local storage of student data
+├── reports/                   # Auto-saves exported PDF reports here
+└── lib/                       # iText .jar files (kernel, layout, etc.)
 ```
 
 🚀 Features
-➕ Add new students
+    ➕ Add new students with full validation
+    👀 View all students (standard and tabular format)
+    🔄 Update existing student details
+    ❌ Delete students by ID
+    🔍 Search student by ID
+    📄 Export to PDF
+        Color-coded CGPA & attendance
+        Categorized sections: Detained, Non-detained, Toppers
+        User-defined file name prompt
+    ✅ CGPA-only result system (0.0 – 10.0)
+    🧍‍♂️ Gender support added
+    ✔️ Robust input validation (age, attendance %, fee non-negative, unique IDs)
 
-👀 View all students (console or table format)
-
-🔄 Update existing student details
-
-❌ Delete students by ID
-
-🔍 Search by student ID
-
-📄 Export all records to a structured PDF file
-
-🎨 Color-coded GPA & attendance in PDF
-
-📂 Categorized export: Detained, Non-detained, Toppers
 
 🧠 How It Works
-When the app starts, it loads students from students.txt.
-
-User is presented with a menu to perform CRUD operations.
-
-All changes are saved back to file (students.txt).
-
-Optionally, data can be exported to PDF using iTex
-
+    On startup, it loads all students from students.txt
+    Offers a menu-based CLI for all operations
+    Saves all changes automatically to file
+    User can choose to export data as PDF into /reports/ directory
+    Prompts user for desired filename for the PDF
 
 📦 Dependencies
-Java 8+
+    Java 8 or later
 
-iText 7 PDF Library
-(Include kernel, layout, and other core jars in lib/ if compiling manually)
+    iText 7 PDF Library
 
+    Include the following JARs in lib/:
+    kernel.jar
+    layout.jar
+    io.jar
+    commons.jar
+    slf4j-api.jar
 
-```
-📸 Sample 
---- Student Management System ---
-1. Add Student
-2. View Students
-3. Update Student
-4. Delete Student
-5. Search Student
-6. Exit
-7. View Students (Table Format)
-8. Export to PDF
-```
+Compile command (if using terminal):
+javac -cp "lib/*" -d . src/*.java
 
-
-🛠 Future Enhancements (Ideas)
-🔐 Admin login/authentication
-
-🎯 Search by name/course
-
-📊 Sort/filter by GPA, attendance, fee
-
-💻 GUI version (JavaFX or Swing)
-
-🧪 Add JUnit tests
-
-
+Run:
+java -cp "lib/*;." Main
 
 ✅ Author
 Made by Uttej
-[https://github.com/uttej-git/]
+GitHub: https://github.com/uttej-git
+
