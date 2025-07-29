@@ -87,6 +87,6 @@ Run:
     java -cp "lib/*;." Main
 
 ✅ Author
-Made by Uttej
-GitHub: https://github.com/uttej-git
+    Made by Uttej
+    GitHub: https://github.com/uttej-git
 
