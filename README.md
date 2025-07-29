@@ -27,37 +27,37 @@ A robust and feature-rich Java-based Student Management System with:
 
 🚀 Features
 
-🧾 Student Operations
-➕ Add Student (with full validation)
-👁️ View Students (tabular format with color codes)
-🔄 Update student details
-❌ Delete by ID
-🔍 Search by ID
-📄 PDF Export (via iText 7)
+    🧾 Student Operations
+    ➕ Add Student (with full validation)
+    👁️ View Students (tabular format with color codes)
+    🔄 Update student details
+    ❌ Delete by ID
+    🔍 Search by ID
+    📄 PDF Export (via iText 7)
 
 Categorized tables:
 
-📌 All students (sorted by ID)
-🚫 Detained: attendance < 50%
-🧠 Toppers: CGPA ≥ 7.5
-🎨 Color-coded cells (for CGPA and attendance)
-📝 Custom filename prompt (e.g., my_report.pdf)
-📁 Auto-saved in reports/ folder
+    📌 All students (sorted by ID)
+    🚫 Detained: attendance < 50%
+    🧠 Toppers: CGPA ≥ 7.5
+    🎨 Color-coded cells (for CGPA and attendance)
+    📝 Custom filename prompt (e.g., my_report.pdf)
+    📁 Auto-saved in reports/ folder
 
 📊 Student Count Summary 
 After viewing all students, you’ll see:
 
-👥 Total students
-🚫 Detained students (Attendance < 50%)
-🧠 Toppers (CGPA ≥ 7.5)
-⚠️ Students with Attendance < 75%
-🔐 Input Validations
-🎂 Age must be between 15 and 100
-🎓 CGPA must be between 0.0 and 10.0
-📉 Attendance must be between 0% and 100%
-💰 Fee must be non-negative
-🆔 Student ID must be unique
-🚻 Gender must be "Male", "Female", or "Other"
+    👥 Total students
+    🚫 Detained students (Attendance < 50%)
+    🧠 Toppers (CGPA ≥ 7.5)
+    ⚠️ Students with Attendance < 75%
+    🔐 Input Validations
+    🎂 Age must be between 15 and 100
+    🎓 CGPA must be between 0.0 and 10.0
+    📉 Attendance must be between 0% and 100%
+    💰 Fee must be non-negative
+    🆔 Student ID must be unique
+    🚻 Gender must be "Male", "Female", or "Other"
 
 🧠 How It Works
 
@@ -81,12 +81,10 @@ After viewing all students, you’ll see:
     slf4j-api.jar
 
 Compile command (if using terminal):
-
-javac -cp "lib/*" -d . src/*.java
+    javac -cp "lib/*" -d . src/*.java
 
 Run:
-
-java -cp "lib/*;." Main
+    java -cp "lib/*;." Main
 
 ✅ Author
 Made by Uttej
