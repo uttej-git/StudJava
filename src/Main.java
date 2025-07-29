@@ -149,13 +149,14 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.print("Enter the name for the PDF file (e.g., `MyReport.pdf`): ");
+                    System.out.print("Enter the name for the PDF file (e.g., MyReport or MyReport.pdf): ");
                     String pdfFileName = sc.nextLine().trim();
+
                     if (!pdfFileName.toLowerCase().endsWith(".pdf")) {
-                        System.out.println("Invalid file name. Must end with `.pdf`");
-                        break;
+                        pdfFileName += ".pdf";
                     }
-                    sm.exportToPDF();
+
+                    sm.exportToPDF(pdfFileName);
                     break;
 
                 case 7:
