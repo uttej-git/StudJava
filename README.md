@@ -1,10 +1,14 @@
 # 🎓 Student Management System (Java)
 
-A simple yet powerful **Java-based Student Management System** with:
-- File-based storage
-- Interactive console UI
-- PDF export with iText 7 (color-coded & categorized)
-- Input validations (age, CGPA, attendance, fee, unique ID)
+A robust and feature-rich Java-based Student Management System with:
+
+📁 Persistent file-based storage
+
+📊 Tabular console UI with student statistics
+
+📄 Categorized PDF export using iText 7
+
+✅ Full input validations and gender support
 
 ---
 
@@ -22,30 +26,55 @@ A simple yet powerful **Java-based Student Management System** with:
 ```
 
 🚀 Features
+🧾 Student Operations
+➕ Add Student (with full validation)
 
-    ➕ Add new students with full validation
+👁️ View Students (tabular format with color codes)
 
-    👀 View all students (standard and tabular format)
+🔄 Update student details
 
-    🔄 Update existing student details
+❌ Delete by ID
 
-    ❌ Delete students by ID
+🔍 Search by ID
 
-    🔍 Search student by ID
+📄 PDF Export (via iText 7)
+Categorized tables:
 
-    📄 Export to PDF
+📌 All students (sorted by ID)
 
-        Color-coded CGPA & attendance
+🚫 Detained: attendance < 50%
 
-        Categorized sections: Detained, Non-detained, Toppers
+🧠 Toppers: CGPA ≥ 7.5
 
-        User-defined file name prompt
+🎨 Color-coded cells (for CGPA and attendance)
 
-    ✅ CGPA-only result system (0.0 – 10.0)
+📝 Custom filename prompt (e.g., my_report.pdf)
 
-    🧍‍♂️ Gender support added
+📁 Auto-saved in reports/ folder
 
-    ✔️ Robust input validation (age, attendance %, fee non-negative, unique IDs)
+📊 Student Count Summary (NEW!)
+After viewing all students, you’ll see:
+
+👥 Total students
+
+🚫 Detained students (Attendance < 50%)
+
+🧠 Toppers (CGPA ≥ 7.5)
+
+⚠️ Students with Attendance < 75%
+
+🔐 Input Validations
+🎂 Age must be between 15 and 100
+
+🎓 CGPA must be between 0.0 and 10.0
+
+📉 Attendance must be between 0% and 100%
+
+💰 Fee must be non-negative
+
+🆔 Student ID must be unique
+
+🚻 Gender must be "Male", "Female", or "Other"
 
 
 🧠 How It Works
