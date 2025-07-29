@@ -33,8 +33,6 @@ public class Student {
     public double getResult() {
         return cgpa;
     }
-
-    // Setters
     public void setName(String name) { this.name = name; }
     public void setAge(int age) { this.age = age; }
     public void setGender(String gender) { this.gender = gender; }
@@ -42,7 +40,6 @@ public class Student {
     public void setCgpa(double cgpa) { this.cgpa = cgpa; }
     public void setAttendance(int attendance) { this.attendance = attendance; }
     public void setFee(double fee) { this.fee = fee; }
-
     @Override
     public String toString() {
         return id + " | " + name + " | " + age + " | " + gender + " | " + course +
