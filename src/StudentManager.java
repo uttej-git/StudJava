@@ -85,31 +85,49 @@ public class StudentManager {
     }
 
     public void viewStudents() {
-        if (students.isEmpty()) {
-            System.out.println("No students found.");
-            return;
+    if (students.isEmpty()) {
+        System.out.println("⚠️ No students available.");
+        return;
+    }
+
+    System.out.println("📋 All Student Details:");
+    System.out.printf("%-5s %-15s %-5s %-8s %-10s %-6s %-12s %-8s%n",
+            "ID", "Name", "Age", "Gender", "Course", "CGPA", "Attendance", "Fee");
+
+    for (Student s : students) {
+        System.out.printf("%-5d %-15s %-5d %-8s %-10s %-6.2f %-12.2f %-8.2f%n",
+        s.getId(), s.getName(), s.getAge(), s.getGender(),
+        s.getCourse(), s.getCgpa(), (double)s.getAttendance(), (double)s.getFee());
+
+    }
+
+    // 🟡 Count logic
+    int total = students.size();
+    int detainedCount = 0;
+    int topperCount = 0;
+    int lowAttendanceCount = 0;
+
+    for (Student s : students) {
+        if (s.getAttendance() < 50) {
+            detainedCount++;
         }
-
-        students.sort(Comparator.comparingInt(Student::getId));
-
-        System.out.printf("%-6s | %-15s | %-5s | %-6s | %-15s | %-12s | %-12s | %-10s\n",
-                "ID", "Name", "Age", "Gender", "Course", "CGPA", "Attendance (%)", "Fee");
-
-        System.out.println("-----------------------------------------------------------------------------------------------");
-
-        for (Student s : students) {
-            System.out.printf("%-6d | %-15s | %-5d | %-6s | %-15s | %-12.2f | %-12d | %-10.2f\n",
-                    s.getId(),
-                    s.getName(),
-                    s.getAge(),
-                    s.getGender(),
-                    s.getCourse(),
-                    s.getResult(),
-                    s.getAttendance(),
-                    s.getFee()
-            );
+        if (s.getCgpa() >= 7.5) {
+            topperCount++;
+        }
+        if (s.getAttendance() < 75) {
+            lowAttendanceCount++;
         }
     }
+
+    // 📊 Display summary
+    System.out.println("\n📊 Summary:");
+    System.out.println("👥 Total students: " + total);
+    System.out.println("🚫 Detained (Attendance < 50%): " + detainedCount);
+    System.out.println("📉 Attendance < 75%: " + lowAttendanceCount);
+    System.out.println("🏅 Toppers (CGPA ≥ 7.5): " + topperCount);
+}
+
+
 
     public void saveToFile(String filename) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
@@ -157,59 +175,75 @@ public class StudentManager {
         }
     }
 
-    public void exportToPDF() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter filename to save (with .pdf extension): ");
-        String fileName = scanner.nextLine().trim();
-
-        if (!fileName.toLowerCase().endsWith(".pdf")) {
-            fileName += ".pdf";
-        }
-
-        File reportsDir = new File("reports");
-        if (!reportsDir.exists()) {
-            reportsDir.mkdirs();
-        }
-
-        String fullPath = "reports/" + fileName;
-
-        try {
-            PdfWriter writer = new PdfWriter(fullPath);
-            PdfDocument pdfDoc = new PdfDocument(writer);
-            Document doc = new Document(pdfDoc);
-
-            doc.add(new Paragraph("Student Report").setFontSize(18).setBold());
-
-            Table table = new Table(UnitValue.createPercentArray(new float[]{1, 3, 1, 2, 2, 2, 2, 2}))
-                    .useAllAvailableWidth();
-
-            table.addHeaderCell("ID");
-            table.addHeaderCell("Name");
-            table.addHeaderCell("Age");
-            table.addHeaderCell("Gender");
-            table.addHeaderCell("Course");
-            table.addHeaderCell("CGPA");
-            table.addHeaderCell("Attendance (%)");
-            table.addHeaderCell("Fee");
-
-            students.sort(Comparator.comparingInt(Student::getId));
-
-            for (Student s : students) {
-                table.addCell(String.valueOf(s.getId()));
-                table.addCell(s.getName());
-                table.addCell(String.valueOf(s.getAge()));
-                table.addCell(s.getGender());
-                table.addCell(s.getCourse());
-                table.addCell(String.format("%.2f", s.getCgpa()));
-                table.addCell(String.valueOf(s.getAttendance()));
-                table.addCell(String.format("%.2f", s.getFee()));
-            }
-
-            doc.add(table);
-            doc.close();
-            System.out.println("✅ PDF exported to " + fullPath);
-        } catch (Exception e) {
-            System.out.println("❌ PDF export failed: " + e.getMessage());
-        }
+    public void exportToPDF(String fileName) {
+    if (!fileName.toLowerCase().endsWith(".pdf")) {
+        fileName += ".pdf";
     }
+
+    File reportsDir = new File("reports");
+    if (!reportsDir.exists()) {
+        reportsDir.mkdirs();
+    }
+
+    String fullPath = "reports/" + fileName;
+
+    try {
+        PdfWriter writer = new PdfWriter(fullPath);
+        PdfDocument pdfDoc = new PdfDocument(writer);
+        Document doc = new Document(pdfDoc);
+
+        doc.add(new Paragraph("Student Report").setFontSize(18).setBold());
+
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 3, 1, 2, 2, 2, 2, 2}))
+                .useAllAvailableWidth();
+
+        table.addHeaderCell("ID");
+        table.addHeaderCell("Name");
+        table.addHeaderCell("Age");
+        table.addHeaderCell("Gender");
+        table.addHeaderCell("Course");
+        table.addHeaderCell("CGPA");
+        table.addHeaderCell("Attendance (%)");
+        table.addHeaderCell("Fee");
+
+        students.sort(Comparator.comparingInt(Student::getId));
+
+        for (Student s : students) {
+            table.addCell(String.valueOf(s.getId()));
+            table.addCell(s.getName());
+            table.addCell(String.valueOf(s.getAge()));
+            table.addCell(s.getGender());
+            table.addCell(s.getCourse());
+            table.addCell(String.format("%.2f", s.getCgpa()));
+            table.addCell(String.valueOf(s.getAttendance()));
+            table.addCell(String.format("%.2f", s.getFee()));
+        }
+
+        doc.add(table);
+        
+int total = students.size();
+int detained = 0, toppers = 0, lowAttendance = 0;
+
+for (Student s : students) {
+    if (s.getCgpa() < 5.0) detained++;
+    if (s.getCgpa() >= 7.5) toppers++;
+    if (s.getAttendance() < 75) lowAttendance++;
+}
+
+doc.add(new Paragraph("\nSummary:")
+        .setFontSize(14).setBold());
+
+doc.add(new Paragraph("📊 Total Students: " + total));
+doc.add(new Paragraph("❌ Detained (CGPA < 5): " + detained));
+doc.add(new Paragraph("🏅 Toppers (CGPA ≥ 7.5): " + toppers));
+doc.add(new Paragraph("🚫 Low Attendance (< 75%): " + lowAttendance));
+
+
+        doc.close();
+        System.out.println("✅ PDF exported to " + fullPath);
+    } catch (Exception e) {
+        System.out.println("❌ PDF export failed: " + e.getMessage());
+    }
+}
+
 }
