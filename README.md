@@ -12,6 +12,14 @@ A robust and feature-rich Java-based Student Management System with:
 
 ---
 
+### 🧾 Student Operations
+    - ➕ **Add Student** (with full validations)
+    - 👁️ **View All Students** (tabular console UI)
+    - 🔄 **Update** student details by ID
+    - ❌ **Delete** student by ID
+    - 🔍 **Search** student by ID
+    - 📄 **Export to PDF** (custom filename, categorized tables)
+
 ## 📂 Project Structure
 
 ```plaintext
@@ -25,27 +33,27 @@ A robust and feature-rich Java-based Student Management System with:
 └── README.md                                  
 ```
 
-🚀 Features
+### 📊 Categorized PDF Export
+    Exports report with:
+    - 📌 **All students** (sorted by ID)
+    - 🚫 **Detained** students (Attendance < 50%)
+    - 🧠 **Toppers** (CGPA ≥ 7.5)
+    - ⚠️ **Low Attendance** (< 75%)
 
-    🧾 Student Operations
-    ➕ Add Student (with full validation)
-    👁️ View Students (tabular format with color codes)
-    🔄 Update student details
-    ❌ Delete by ID
-    🔍 Search by ID
-    📄 PDF Export (via iText 7)
 
-Categorized tables:
 
-    📌 All students (sorted by ID)
-    🚫 Detained: attendance < 50%
-    🧠 Toppers: CGPA ≥ 7.5
-    🎨 Color-coded cells (for CGPA and attendance)
-    📝 Custom filename prompt (e.g., my_report.pdf)
-    📁 Auto-saved in reports/ folder
 
-📊 Student Count Summary 
-After viewing all students, you’ll see:
+### 📋 Validations
+    - 🎂 **Age**: 15–100
+    - 🎓 **CGPA**: 0.0–10.0
+    - 📉 **Attendance**: 0–100%
+    - 💰 **Fee**: Must be non-negative
+    - 🆔 **Student ID**: Unique
+    - 🚻 **Gender**: Must be "Male", "Female", or "Other"
+
+###📊 Student Count Summary 
+
+    After viewing all students, you’ll see:
 
     👥 Total students
     🚫 Detained students (Attendance < 50%)
